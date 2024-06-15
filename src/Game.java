@@ -1,29 +1,29 @@
 import java.util.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Game implements IFavoritable{
-    public String name;
-    public String imagePath;
-    public Date release;
-    public String description;
-    public String genre;
-    public List<Character> RelatedCharacters;
-    public List<GameFavorite> Favorites;
+    private String name;
+    private Date release;
+    private String description;
+    private String genre;
+    private ArrayList<Character> relatedCharacters = new ArrayList<>();
+    private ArrayList<GameFavorite> favorites = new ArrayList<>();
 
-    public List<Character> getRelatedCharacters() {
-        return RelatedCharacters;
+    public Game(String name, Date release, String description, String genre, String publisher, String developer) {
+        this.name = name;
+        this.release = release;
+        this.description = description;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.developer = developer;
     }
 
-    public void setRelatedCharacters(List<Character> relatedCharacters) {
-        RelatedCharacters = relatedCharacters;
+    public ArrayList<Character> getRelatedCharacters() {
+        return relatedCharacters;
     }
 
-    public List<GameFavorite> getFavorites() {
-        return Favorites;
-    }
-
-    public void setFavorites(List<GameFavorite> favorites) {
-        Favorites = favorites;
+    public ArrayList<GameFavorite> getFavorites() {
+        return favorites;
     }
 
     public String getName() {
@@ -32,14 +32,6 @@ public class Game implements IFavoritable{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 
     public Date getRelease() {
@@ -86,26 +78,11 @@ public class Game implements IFavoritable{
     public String developer;
 
 
-    @Override
-    public void AddFavorite(User user) {
+    public void addFavorite(User user) {
 
     }
 
-    @Override
-    public void RemoveFavorite(User user) {
+    public void removeFavorite(User user) {
 
-    }
-
-    public Game(String name, String imagePath, Date release, String description, String genre, List<Character> relatedCharacters, List<GameFavorite> favorites, String publisher, String developer)
-    {
-        this.name = name;
-        this.imagePath = imagePath;
-        this.release = release;
-        this.description = description;
-        this.genre = genre;
-        RelatedCharacters = relatedCharacters;
-        Favorites = favorites;
-        this.publisher = publisher;
-        this.developer = developer;
     }
 }
