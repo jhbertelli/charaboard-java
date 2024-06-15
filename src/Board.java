@@ -11,6 +11,22 @@ public class Board {
         this.description = description;
     }
 
+    public void addCharacter(Character character) {
+        characters.add(character);
+    }
+
+    public void addGame(Game game) {
+        games.add(game);
+    }
+
+    public void removeCharacter(Character character) {
+        characters.remove(character);
+    }
+
+    public void removeGame(Game game) {
+        games.remove(game);
+    }
+
     public String getName() {
         return name;
     }

@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.ArrayList;
 
-public class Game implements IFavoritable{
+public class Game implements IFavoritable<GameFavorite> {
     private String name;
     private Date release;
     private String description;
@@ -78,11 +78,11 @@ public class Game implements IFavoritable{
     public String developer;
 
 
-    public void addFavorite(User user) {
-
+    public void addFavorite(GameFavorite favorite) {
+        favorites.add(favorite);
     }
 
-    public void removeFavorite(User user) {
-
+    public void removeFavorite(GameFavorite favorite) {
+        favorites.remove(favorite);
     }
 }

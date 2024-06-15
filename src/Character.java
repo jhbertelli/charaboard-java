@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Character implements IFavoritable {
+public class Character implements IFavoritable<CharacterFavorite> {
     private String name;
     private int age;
     private String description;
@@ -9,8 +9,7 @@ public class Character implements IFavoritable {
     private ArrayList<Game> relatedGames = new ArrayList<>();
     private ArrayList<CharacterFavorite> favorites = new ArrayList<>();
 
-    public Character(String name, int age, String description, String race, Gender gender)
-    {
+    public Character(String name, int age, String description, String race, Gender gender) {
         this.name = name;
         this.age = age;
         this.description = description;
@@ -66,11 +65,11 @@ public class Character implements IFavoritable {
         this.gender = gender;
     }
 
-    public void addFavorite(User user) {
-
+    public void addFavorite(CharacterFavorite favorite) {
+        favorites.add(favorite);
     }
 
-    public void removeFavorite(User user) {
-
+    public void removeFavorite(CharacterFavorite favorite) {
+        favorites.remove(favorite);
     }
 }
