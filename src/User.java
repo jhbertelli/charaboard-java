@@ -1,13 +1,20 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class User {
     private String username;
     private String nickname;
     private String email;
     private String password;
-    private List<Board> boards;
-//    private List<CharacterFavorite> favoriteCharacters;
-//    private List<GameFavorite> favoriteGames;
+    private ArrayList<Board> boards = new ArrayList<>();
+    private ArrayList<CharacterFavorite> favoriteCharacters = new ArrayList<>();
+    private ArrayList<GameFavorite> favoriteGames = new ArrayList<>();
+
+    public User(String username, String nickname, String email, String password) {
+        this.username = username;
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getPassword() {
         return password;

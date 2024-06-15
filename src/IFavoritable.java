@@ -1,4 +1,4 @@
 public interface IFavoritable {
-    void AddFavorite(User user);
-    void RemoveFavorite(User user);
+    void addFavorite(User user);
+    void removeFavorite(User user);
 }

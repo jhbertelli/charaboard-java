@@ -1,30 +1,29 @@
-import java.util.List;
-import java.util.ListIterator;
+import java.util.ArrayList;
 
-public class Character implements IFavoritable{
-    public String name;
-    public String imagePath;
-    public int age;
-    public String description;
-    public String face;
-    public String gender;
-    public List<Game> RelatedGames;
-    public List<CharacterFavorite> Favorites;
+public class Character implements IFavoritable {
+    private String name;
+    private int age;
+    private String description;
+    private String race;
+    private Gender gender;
+    private ArrayList<Game> relatedGames = new ArrayList<>();
+    private ArrayList<CharacterFavorite> favorites = new ArrayList<>();
 
-    public List<Game> getRelatedGames() {
-        return RelatedGames;
+    public Character(String name, int age, String description, String race, Gender gender)
+    {
+        this.name = name;
+        this.age = age;
+        this.description = description;
+        this.race = race;
+        this.gender = gender;
     }
 
-    public void setRelatedGames(List<Game> relatedGames) {
-        RelatedGames = relatedGames;
+    public ArrayList<Game> getRelatedGames() {
+        return relatedGames;
     }
 
-    public List<CharacterFavorite> getFavorites() {
-        return Favorites;
-    }
-
-    public void setFavorites(List<CharacterFavorite> favorites) {
-        Favorites = favorites;
+    public ArrayList<CharacterFavorite> getFavorites() {
+        return favorites;
     }
 
     public String getName() {
@@ -33,14 +32,6 @@ public class Character implements IFavoritable{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 
     public int getAge() {
@@ -59,41 +50,27 @@ public class Character implements IFavoritable{
         this.description = description;
     }
 
-    public String getFace() {
-        return face;
+    public String getRace() {
+        return race;
     }
 
-    public void setFace(String face) {
-        this.face = face;
+    public void setRace(String race) {
+        this.race = race;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    @Override
-    public void AddFavorite(User user) {
+    public void addFavorite(User user) {
 
     }
 
-    @Override
-    public void RemoveFavorite(User user) {
+    public void removeFavorite(User user) {
 
-    }
-
-    public Character(String name, String imagePath, int age, String description, String face, String gender, List<Game> relatedGames, List<CharacterFavorite> favorites)
-    {
-        this.name = name;
-        this.imagePath = imagePath;
-        this.age = age;
-        this.description = description;
-        this.face = face;
-        this.gender = gender;
-        RelatedGames = relatedGames;
-        Favorites = favorites;
     }
 }
