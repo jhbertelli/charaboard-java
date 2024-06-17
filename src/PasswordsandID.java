@@ -1,15 +1,15 @@
 import java.util.HashMap;
 
 public class PasswordsandID {
-    HashMap<String,String> logininfo = new HashMap<String,String>();
+    HashMap<String,String> loginInfo = new HashMap<>();
 
     PasswordsandID(){
-        logininfo.put("Teste","Teste");
-        logininfo.put("USERNAME","PASSWORD");
+        loginInfo.put("Teste","Teste");
+        loginInfo.put("USERNAME","PASSWORD");
     }
 
-    HashMap getLoginInfo(){
-        return logininfo;
+    HashMap<String,String> getLoginInfo(){
+        return loginInfo;
     }
 
 }
