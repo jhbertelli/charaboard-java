@@ -5,11 +5,11 @@ public class Character implements IFavoritable<CharacterFavorite> {
     private int age;
     private String description;
     private String race;
-    private Gender gender;
+    private String gender;
     private ArrayList<Game> relatedGames = new ArrayList<>();
     private ArrayList<CharacterFavorite> favorites = new ArrayList<>();
 
-    public Character(String name, int age, String description, String race, Gender gender) {
+    public Character(String name, int age, String description, String race, String gender) {
         this.name = name;
         this.age = age;
         this.description = description;
@@ -56,12 +56,11 @@ public class Character implements IFavoritable<CharacterFavorite> {
     public void setRace(String race) {
         this.race = race;
     }
-
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
