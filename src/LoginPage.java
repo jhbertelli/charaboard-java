@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class LoginPage implements ActionListener {
 
@@ -55,35 +57,31 @@ public class LoginPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource()==resetButton){
+        if (e.getSource()==resetButton){
             userIDField.setText("");
             userPasswordField.setText("");
         }
 
-        if(e.getSource()==loginButton){
+        if (e.getSource()==loginButton) {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
-            if(loginInfo.containsKey(userID)){
-                if(loginInfo.get(userID).equals(password)){
+            if(loginInfo.containsKey(userID) && loginInfo.get(userID).equals(password)) {
                  messageLabel.setForeground(Color.green);
                  messageLabel.setText("Login successful");
                  frame.dispose();
-                 Menu.showMenu();
-                 //WelcomePage welcomePage = new WelcomePage(userID);
-                }
-                else {
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Wrong Password or userID");
-                }
 
-            }
-            else {
+                 User user = Arrays.stream(FakeUsers.getFakeUsers())
+                     .filter(x -> Objects.equals(x.getUsername(), userID))
+                     .findFirst()
+                     .orElse(null);
+
+                 new Menu(user).showMenu();
+                 //WelcomePage welcomePage = new WelcomePage(user.getUsername());
+            } else {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("Wrong Password or userID");
             }
-
         }
-
     }
 }

@@ -9,13 +9,13 @@ import static javax.swing.JOptionPane.*;
 public class InputOutput {
     public static final String DATE_FORMAT = "dd/MM/yyyy";
 
-    public static String returnString(String mensagem) {
+    public static String returnString(String mensagem) throws NullPointerException {
         String message = "";
 
         while (message.isEmpty()) {
             String input = showInputDialog(mensagem);
 
-            if (input == null) return null;
+            if (input == null) throw new NullPointerException();
 
             message = input.trim();
             if (message.isEmpty()) showMessage("Informe um valor.");
@@ -77,6 +77,41 @@ public class InputOutput {
 
     public static void showMessage(String message) {
         showMessageDialog(null, message);
+    }
 
+    public static void showCharacter(Character character) {
+        String message = String.format("""
+Dados do personagem
+
+Nome: %s
+Idade: %d
+Descrição: %s
+Raça: %s
+Gênero: %s
+Quantidade de favoritos: %d
+""",
+            character.getName(),
+            character.getAge(),
+            character.getDescription(),
+            character.getRace(),
+            character.getGender().toString(),
+            character.getFavorites().size()
+        );
+
+        showMessage(message);
+    }
+
+    public static void showBoard(Board board) {
+        String message = String.format("""
+Dados do board
+
+Nome: %s
+Descrição: %s
+""",
+            board.getName(),
+            board.getDescription()
+        );
+
+        showMessage(message);
     }
 }

@@ -24,6 +24,10 @@ public class User {
         boards.remove(board);
     }
 
+    public ArrayList<Board> getBoards() {
+        return boards;
+    }
+
     public void addFavoriteCharacter(Character character) {
         // TODO: verificar se o personagem já é favorito do usuário e se for, lançar uma exceção
         CharacterFavorite favorite = new CharacterFavorite(character);
