@@ -21,6 +21,11 @@ public class Character implements IFavoritable<CharacterFavorite> {
         return relatedGames;
     }
 
+    public Character addRelatedGames(Game game){
+        relatedGames.add(game);
+        return this;
+    }
+
     public ArrayList<CharacterFavorite> getFavorites() {
         return favorites;
     }

@@ -27,7 +27,8 @@ public class FakeCharacters {
         20,
         "Red (Japonês: レッド Red) é o personagem com quem o jogador joga na geração 1 de jogos, Pokémon red, blue, green, yellow e é a escolha de personagem masculino em nos remakes da terceira geração, Pokémon FireRed e LeafGreen",
         "Humano",
-        Gender.Male);
+        Gender.Male
+    ).addRelatedGames(FakeGames.pokemonRed).addRelatedGames(FakeGames.PokemonBlue);
 
     final static Character laraCroft = new Character(
         "Lara Croft",
