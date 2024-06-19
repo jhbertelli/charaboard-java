@@ -83,7 +83,8 @@ Dados do personagem
 
 Nome: %s
 Idade: %d
-Descrição: %s
+Descrição:
+%s
 Raça: %s
 Gênero: %s
 Quantidade de favoritos: %d

@@ -5,9 +5,9 @@ public class User {
     private String nickname;
     private String email;
     private String password;
-    private ArrayList<Board> boards = new ArrayList<>();
-    private ArrayList<CharacterFavorite> favoriteCharacters = new ArrayList<>();
-    private ArrayList<GameFavorite> favoriteGames = new ArrayList<>();
+    private final ArrayList<Board> boards = new ArrayList<>();
+    private final ArrayList<CharacterFavorite> favoriteCharacters = new ArrayList<>();
+    private final ArrayList<GameFavorite> favoriteGames = new ArrayList<>();
 
     public User(String username, String nickname, String email, String password) {
         this.username = username;
@@ -26,6 +26,14 @@ public class User {
 
     public ArrayList<Board> getBoards() {
         return boards;
+    }
+
+    public ArrayList<CharacterFavorite> getFavoriteCharacters() {
+        return favoriteCharacters;
+    }
+
+    public ArrayList<GameFavorite> getFavoriteGames() {
+        return favoriteGames;
     }
 
     public void addFavoriteCharacter(Character character) {

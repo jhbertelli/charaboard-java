@@ -20,7 +20,7 @@ public class FakeCharacters {
     final static Character kratos = new Character(
         "Kratos",
         200,
-        "Kratos, também conhecido como o Fantasma de Esparta é o protagonis de mais de 8 jogos da série God of War, onde atua como uma espécie de anti-herói tentando mudar seu destino, ao mesmo tempo que trucida praticamente, ou se não absolutamente, todos os deuses do olimpo",
+        "Kratos, também conhecido como o Fantasma de Esparta é o protagonis de mais de 8 jogos da série God of War,\nonde atua como uma espécie de anti-herói tentando mudar seu destino, ao mesmo tempo que trucida praticamente, ou se não absolutamente, todos os deuses do olimpo",
         "Deus",
         Gender.Male
     );
@@ -28,7 +28,7 @@ public class FakeCharacters {
     final static Character redPokemon = new Character(
         "Red",
         20,
-        "Red (Japonês: レッド Red) é o personagem com quem o jogador joga na geração 1 de jogos, Pokémon red, blue, green, yellow e é a escolha de personagem masculino em nos remakes da terceira geração, Pokémon FireRed e LeafGreen",
+        "Red (Japonês: レッド Red) é o personagem com quem o jogador joga na geração 1 de jogos, Pokémon Red, Blue, Green,\nYellow e é a escolha de personagem masculino em nos remakes da terceira geração, Pokémon FireRed e LeafGreen",
         "Humano",
         Gender.Male
     ).addRelatedGames(FakeGames.pokemonRed).addRelatedGames(FakeGames.PokemonBlue);
@@ -45,7 +45,7 @@ public class FakeCharacters {
     final static Character character1 = new Character(
         "Liora Sunblade",
         27,
-        "Liora é uma guerreira habilidosa com uma espada encantada que brilha com uma luz dourada. Ela é conhecida por sua bravura e senso de justiça, sempre defendendo os fracos e oprimidos.",
+        "Liora é uma guerreira habilidosa com uma espada encantada que brilha com uma luz dourada.\nEla é conhecida por sua bravura e senso de justiça, sempre defendendo os fracos e oprimidos.",
         "Elfo",
         Gender.Female
     );
@@ -53,7 +53,7 @@ public class FakeCharacters {
     final static Character character2 = new Character(
         "Thorin Oakenshield",
         150,
-        "Thorin é um anão robusto e determinado, com uma barba longa e trançada. Ele é um líder nato, determinado a recuperar o reino perdido de sua linhagem e proteger seu povo a qualquer custo.",
+        "Thorin é um anão robusto e determinado, com uma barba longa e trançada.\nEle é um líder nato, determinado a recuperar o reino perdido de sua linhagem e proteger seu povo a qualquer custo.",
         "Anão",
         Gender.Male
     );
@@ -61,7 +61,7 @@ public class FakeCharacters {
     final static Character character3 = new Character(
         "Elysia Nightshade",
         34,
-        "Elysia é uma feiticeira misteriosa com olhos violetas e cabelo prateado. Ela possui vasto conhecimento sobre magia antiga e é frequentemente consultada por aqueles que procuram sabedoria e poder.",
+        "Elysia é uma feiticeira misteriosa com olhos violetas e cabelo prateado.\nEla possui vasto conhecimento sobre magia antiga e é frequentemente consultada por aqueles que procuram sabedoria e poder.",
         "Humano",
         Gender.Female
     );

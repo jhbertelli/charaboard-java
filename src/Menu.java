@@ -12,6 +12,11 @@ public class Menu {
     public void showMenu() {
         int answer;
 
+        // TODO:
+        //      exibir jogo
+        //      favoritar jogo
+        //      remover jogo favorito
+
         JComboBox<String> options = new JComboBox<>(new String[] {
             "Exibir personagem",
             "Criar board",
@@ -19,6 +24,8 @@ public class Menu {
             "Adicionar personagem a um board",
             "Adicionar jogo a um board",
             "Remover board",
+            "Favoritar personagem",
+            "Remover personagem favorito",
             "Sair"
         });
 
@@ -41,11 +48,18 @@ public class Menu {
                     break;
                 case 4:
                     addGameToBoard();
+                    break;
                 case 5:
                     deleteBoard();
                     break;
+                case 6:
+                    addCharacterFavorite();
+                    break;
+                case 7:
+                    removeCharacterFavorite();
+                    break;
             }
-        } while (answer != 6);
+        } while (answer != 8);
     }
 
     private void showCharacter() {
@@ -78,6 +92,8 @@ public class Menu {
     private void deleteBoard() {
         Board board = DataSelector.selectBoard(user);
 
+        if (board == null) return;
+
         user.deleteBoard(board);
     }
 
@@ -103,5 +119,21 @@ public class Menu {
         if (game == null) return;
 
         board.addGame(game);
+    }
+
+    private void addCharacterFavorite() {
+        Character character = DataSelector.selectCharacter();
+
+        if (character == null) return;
+
+        user.addFavoriteCharacter(character);
+    }
+
+    private void removeCharacterFavorite() {
+        Character character = DataSelector.selectFavoriteCharacter(user);
+
+        if (character == null) return;
+
+        user.removeFavoriteCharacter(character);
     }
 }

@@ -3,6 +3,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
+import java.util.List;
 
 public class DataSelector {
     private static final Character[] characters = FakeCharacters.getFakeCharacters();
@@ -35,6 +36,45 @@ public class DataSelector {
         int selectedIndex = options.getSelectedIndex();
 
         return characters[selectedIndex];
+    }
+
+    @Nullable
+    public static Character selectFavoriteCharacter(User user) {
+        if (user.getFavoriteCharacters().isEmpty()) {
+            InputOutput.showMessage("Você não possui personagens favoritos.");
+            return null;
+        }
+
+        JPanel panel = new JPanel(new GridLayout(2, 1));
+
+        panel.add(new JLabel("Informe o personagem:"));
+
+        List<Character> characters = user.getFavoriteCharacters()
+            .stream()
+            .map(CharacterFavorite::getCharacter)
+            .toList();
+
+        JComboBox<String> options = new JComboBox<>(
+            characters.stream().map(Character::getName).toArray(String[]::new)
+        );
+
+        panel.add(options);
+
+        int result = JOptionPane.showConfirmDialog(
+            null,
+            panel,
+            "Selecionar Personagem",
+            JOptionPane.OK_CANCEL_OPTION
+        );
+
+        if (result != JOptionPane.OK_OPTION) {
+            InputOutput.showMessage("Operação cancelada.");
+            return null;
+        }
+
+        int selectedIndex = options.getSelectedIndex();
+
+        return characters.get(selectedIndex);
     }
 
     @Nullable
