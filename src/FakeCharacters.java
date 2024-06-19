@@ -6,21 +6,24 @@ public class FakeCharacters {
         495,
         "Uma vampira que mora na Mansão do Demônio Escarlate.\nPossui olhos escarlate, cabelo loiro curto preso em um único lado por um rabo de cavalo.\nSua principal característica é ser uma vampira com grande vontade de destruição",
         "Vampiro",
-        Gender.Female);
+        Gender.Female
+    );
 
     final static Character solidSnake = new Character(
         "Solid Snake",
         52,
         "Seu nome real é David, mas também é conhecido como Old Snake, Iroquois Pliskin ou simplesmente Snake.\nNasceu em 1972, possui nacionalidade norte americana (Estados Unidos).\nFoi criado como um clone do soldado Big Boss, inicialmente participou dos boina verdes e posteriormente introduzido na Unidade de Forças Especiais de Alta Tecnologia FOXHOUND na década de 1990",
         "Humano",
-        Gender.Male);
+        Gender.Male
+    );
 
     final static Character kratos = new Character(
         "Kratos",
         200,
         "Kratos, também conhecido como o Fantasma de Esparta é o protagonis de mais de 8 jogos da série God of War, onde atua como uma espécie de anti-herói tentando mudar seu destino, ao mesmo tempo que trucida praticamente, ou se não absolutamente, todos os deuses do olimpo",
         "Deus",
-        Gender.Male);
+        Gender.Male
+    );
 
     final static Character redPokemon = new Character(
         "Red",
@@ -35,7 +38,8 @@ public class FakeCharacters {
         21,
         "Lara é a protagonista de série Tomb Raider, é uma arqueóloga britânica que se aventura em antigas tumbas e ruínas perigosas à procura de artefatos valiosos",
         "Humano",
-        Gender.Female);
+        Gender.Female
+    );
 
     //esses próximos eu pedi pro gpt pra testar
     final static Character character1 = new Character(
