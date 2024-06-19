@@ -44,7 +44,7 @@ public class DataSelector {
             return null;
         }
 
-        JPanel panel = new JPanel(new GridLayout(1, 2));
+        JPanel panel = new JPanel(new GridLayout(2, 1));
 
         panel.add(new JLabel("Informe o board:"));
 

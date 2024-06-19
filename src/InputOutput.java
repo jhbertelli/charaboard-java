@@ -100,7 +100,9 @@ Quantidade de favoritos: %d
     }
 
     public static void showBoard(Board board) {
-        String message = String.format("""
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(String.format("""
 Dados do board
 
 Nome: %s
@@ -108,8 +110,26 @@ Descrição: %s
 """,
             board.getName(),
             board.getDescription()
+        ));
+
+        builder.append(
+            String.format("Personagens adicionados (%d):\n", board.getCharacters().size())
         );
 
-        showMessage(message);
+        for (Character character : board.getCharacters()) {
+            builder.append(character.getName()).append('\n');
+        }
+
+        builder.append(
+            String.format("\nJogos adicionados (%d):\n", board.getGames().size())
+        );
+
+        for (Game game : board.getGames()) {
+            builder.append(game.getName()).append('\n');
+        }
+
+        builder.append('\n');
+
+        showMessage(builder.toString());
     }
 }

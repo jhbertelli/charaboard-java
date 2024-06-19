@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Board {
     private String name;
     private String description;
-    private ArrayList<Character> characters = new ArrayList<>();
-    private ArrayList<Game> games = new ArrayList<>();
+    private final ArrayList<Character> characters = new ArrayList<>();
+    private final ArrayList<Game> games = new ArrayList<>();
 
     public Board(String name, String description) {
         this.name = name;
@@ -41,5 +41,13 @@ public class Board {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ArrayList<Character> getCharacters() {
+        return characters;
+    }
+
+    public ArrayList<Game> getGames() {
+        return games;
     }
 }

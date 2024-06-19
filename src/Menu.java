@@ -16,6 +16,8 @@ public class Menu {
             "Exibir personagem",
             "Criar board",
             "Exibir board",
+            "Adicionar personagem a um board",
+            "Adicionar jogo a um board",
             "Sair"
         });
 
@@ -36,8 +38,11 @@ public class Menu {
                 case 3:
                     addCharacterToBoard();
                     break;
+                case 4:
+                    addGameToBoard();
+                    break;
             }
-        } while (answer != 4);
+        } while (answer != 5);
     }
 
     private void showCharacter() {
@@ -72,6 +77,22 @@ public class Menu {
 
         if (board == null) return;
 
-        InputOutput.showBoard(board);
+        Character character = DataSelector.selectCharacter();
+
+        if (character == null) return;
+
+        board.addCharacter(character);
+    }
+
+    private void addGameToBoard() {
+        Board board = DataSelector.selectBoard(user);
+
+        if (board == null) return;
+
+        Game game = DataSelector.selectGame();
+
+        if (game == null) return;
+
+        board.addGame(game);
     }
 }
