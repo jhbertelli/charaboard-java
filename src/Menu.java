@@ -18,6 +18,7 @@ public class Menu {
             "Exibir board",
             "Adicionar personagem a um board",
             "Adicionar jogo a um board",
+            "Remover board",
             "Sair"
         });
 
@@ -40,9 +41,11 @@ public class Menu {
                     break;
                 case 4:
                     addGameToBoard();
+                case 5:
+                    deleteBoard();
                     break;
             }
-        } while (answer != 5);
+        } while (answer != 6);
     }
 
     private void showCharacter() {
@@ -70,6 +73,12 @@ public class Menu {
         if (board == null) return;
 
         InputOutput.showBoard(board);
+    }
+
+    private void deleteBoard() {
+        Board board = DataSelector.selectBoard(user);
+
+        user.deleteBoard(board);
     }
 
     private void addCharacterToBoard() {
