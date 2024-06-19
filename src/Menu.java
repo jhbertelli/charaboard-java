@@ -54,11 +54,11 @@ public class Menu {
     }
 
     private void createBoard() {
+        // try catch temporário
         try {
-            user.createBoard(
-                InputOutput.returnString("Informe o nome do board: "),
-                InputOutput.returnString("Informe a descrição do board: ")
-            );
+            String name = InputOutput.returnString("Informe o nome do board: ");
+            String description = InputOutput.returnString("Informe a descrição do board: ");
+            user.addBoard(new Board(name, description));
         } catch (NullPointerException e) {
             InputOutput.showMessage("Operação cancelada.");
         }

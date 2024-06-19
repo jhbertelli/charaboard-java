@@ -16,9 +16,11 @@ public class LoginPage implements ActionListener {
     JLabel userIDLabel = new JLabel("userID: ");
     JLabel userPasswordLabel = new JLabel("password: ");
     JLabel messageLabel = new JLabel();
+    User[] users;
     HashMap<String,String> loginInfo = new HashMap<String,String>();
 
-    LoginPage(HashMap<String,String> loginInfoOriginal){
+    LoginPage(User[] users, HashMap<String,String> loginInfoOriginal){
+        this.users = users;
         loginInfo = loginInfoOriginal;
 
         userIDLabel.setBounds(50, 100,75,25);
@@ -71,7 +73,7 @@ public class LoginPage implements ActionListener {
                  messageLabel.setText("Login successful");
                  frame.dispose();
 
-                 User user = Arrays.stream(FakeUsers.getFakeUsers())
+                 User user = Arrays.stream(users)
                      .filter(x -> Objects.equals(x.getUsername(), userID))
                      .findFirst()
                      .orElse(null);

@@ -16,8 +16,8 @@ public class User {
         this.password = password;
     }
 
-    public void createBoard(String name, String description) {
-        boards.add(new Board(name, description));
+    public void addBoard(Board board) {
+        boards.add(board);
     }
 
     public void deleteBoard(Board board) {

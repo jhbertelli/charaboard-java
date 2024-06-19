@@ -1,38 +1,70 @@
 import java.util.Arrays;
 
 public class FakeUsers {
-    final static User userOne = new User(
-        "cristopher",
-        "Cristopher Robin",
-        "cristopher@fake.com",
-        "123");
+    private final User[] fakeUsers;
+    private final User userOne;
+    private final User userTwo;
+    private final User userThree;
+    private final User userFour;
 
-    final static User userTwo = new User(
-        "Teste",
-        "Teste",
-        "teste@teste.com",
-        "Teste");
+    FakeUsers() {
+        FakeBoards boards = new FakeBoards();
 
-    final static User userThree = new User(
-        "USERNAME",
-        "USERNAME",
-        "username@fake.com",
-        "PASSWORD");
+        userOne = new User(
+            "cristopher",
+            "Cristopher Robin",
+            "cristopher@fake.com",
+            "123");
 
-    final static User userFour = new User(
-        "1",
-        "fake",
-        "fake@fake.com",
-        "1");
+        userOne.addBoard(boards.getBoardOne());
 
-    public static User[] getFakeUsers() {
-        return Arrays.stream(new User[] {
-            userOne,
-            userTwo,
-            userThree,
-            userFour
-        })
-        .sorted((a, b) -> a.getNickname().compareToIgnoreCase(b.getNickname()))
-        .toArray(User[]::new);
+        userTwo = new User(
+            "Teste",
+            "Teste",
+            "teste@teste.com",
+            "Teste");
+
+        userThree = new User(
+            "USERNAME",
+            "USERNAME",
+            "username@fake.com",
+            "PASSWORD");
+
+        userFour = new User(
+            "1",
+            "fake",
+            "fake@fake.com",
+            "1");
+
+        userFour.addBoard(boards.getBoardTwo());
+
+        fakeUsers = Arrays.stream(new User[] {
+                userOne,
+                userTwo,
+                userThree,
+                userFour
+            })
+            .sorted((a, b) -> a.getNickname().compareToIgnoreCase(b.getNickname()))
+            .toArray(User[]::new);
+    }
+
+    public User[] getFakeUsers() {
+        return fakeUsers;
+    }
+
+    public User getUserOne() {
+        return userOne;
+    }
+
+    public User getUserTwo() {
+        return userTwo;
+    }
+
+    public User getUserThree() {
+        return userThree;
+    }
+
+    public User getUserFour() {
+        return userFour;
     }
 }

@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-
-        PasswordsandID passwordsAndID = new PasswordsandID();
-        LoginPage loginPage = new LoginPage(passwordsAndID.getLoginInfo());
+        User[] users = new FakeUsers().getFakeUsers();
+        PasswordsandID passwordsAndID = new PasswordsandID(users);
+        LoginPage loginPage = new LoginPage(users, passwordsAndID.getLoginInfo());
 
     }
 }
