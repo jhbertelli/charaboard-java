@@ -1,12 +1,8 @@
 import javax.swing.*;
 
-import java.awt.*;
-import java.util.Arrays;
-
 import static javax.swing.JOptionPane.*;
 
 public class Menu {
-    private final Character[] characters = FakeCharacters.getFakeCharacters();
     private final User user;
 
     Menu(User user) {
@@ -29,39 +25,27 @@ public class Menu {
 
             switch (answer) {
                 case 0:
-                    showCharacters();
+                    showCharacter();
                     break;
                 case 1:
                     createBoard();
                     break;
                 case 2:
-                    showBoards();
+                    showBoard();
+                    break;
+                case 3:
+                    addCharacterToBoard();
                     break;
             }
-        } while (answer != 3);
+        } while (answer != 4);
     }
 
-    private void showCharacters() {
-        JPanel panel = new JPanel(new GridLayout(1, 2));
+    private void showCharacter() {
+        Character character = DataSelector.selectCharacter();
 
-        panel.add(new JLabel("Informe o personagem:"));
+        if (character == null) return;
 
-        JComboBox<String> options = new JComboBox<>(
-            Arrays.stream(characters).map(Character::getName).toArray(String[]::new)
-        );
-
-        panel.add(options);
-
-        int result = JOptionPane.showConfirmDialog(null, panel, "Cadastro", JOptionPane.OK_CANCEL_OPTION);
-
-        if (result != JOptionPane.OK_OPTION) {
-            InputOutput.showMessage("Operação cancelada.");
-            return;
-        }
-
-        int selectedIndex = options.getSelectedIndex();
-
-        InputOutput.showCharacter(characters[selectedIndex]);
+        InputOutput.showCharacter(character);
     }
 
     private void createBoard() {
@@ -75,33 +59,19 @@ public class Menu {
         }
     }
 
-    private void showBoards() {
-        if (user.getBoards().isEmpty()) {
-            InputOutput.showMessage("Você não possui boards no momento.");
-            return;
-        }
+    private void showBoard() {
+        Board board = DataSelector.selectBoard(user);
 
-        JPanel panel = new JPanel(new GridLayout(1, 2));
+        if (board == null) return;
 
-        panel.add(new JLabel("Informe o board:"));
+        InputOutput.showBoard(board);
+    }
 
-        JComboBox<String> options = new JComboBox<>(
-            user.getBoards().stream().map(Board::getName).toArray(String[]::new)
-        );
+    private void addCharacterToBoard() {
+        Board board = DataSelector.selectBoard(user);
 
-        panel.add(options);
+        if (board == null) return;
 
-        int result = JOptionPane.showConfirmDialog(null, panel, "Cadastro", JOptionPane.OK_CANCEL_OPTION);
-
-        if (result != JOptionPane.OK_OPTION) {
-            InputOutput.showMessage("Operação cancelada.");
-            return;
-        }
-
-        int selectedIndex = options.getSelectedIndex();
-
-        Board selectedBoard = user.getBoards().get(selectedIndex);
-
-        InputOutput.showBoard(selectedBoard);
+        InputOutput.showBoard(board);
     }
 }
