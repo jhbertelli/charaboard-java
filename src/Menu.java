@@ -100,6 +100,8 @@ public class Menu {
 
         int selectedIndex = options.getSelectedIndex();
 
-        InputOutput.showBoard(user.getBoards().get(selectedIndex));
+        Board selectedBoard = user.getBoards().get(selectedIndex);
+
+        InputOutput.showBoard(selectedBoard);
     }
 }

@@ -15,8 +15,6 @@ public class InputOutput {
         while (message.isEmpty()) {
             String input = showInputDialog(mensagem);
 
-            if (input == null) throw new NullPointerException();
-
             message = input.trim();
             if (message.isEmpty()) showMessage("Informe um valor.");
         }
