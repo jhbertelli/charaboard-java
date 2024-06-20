@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataSelector {
-    private static final Character[] characters = FakeCharacters.getFakeCharacters();
-    private static final Game[] games = FakeGames.getFakeGames();
+    private static final Database db = new Database();
 
     public static Character selectCharacter() {
         JPanel panel = new JPanel(new GridLayout(2, 1));
@@ -13,7 +12,7 @@ public class DataSelector {
         panel.add(new JLabel("Informe o personagem:"));
 
         JComboBox<String> options = new JComboBox<>(
-            Arrays.stream(characters).map(Character::getName).toArray(String[]::new)
+            Arrays.stream(db.getCharacters()).map(Character::getName).toArray(String[]::new)
         );
 
         panel.add(options);
@@ -32,7 +31,7 @@ public class DataSelector {
 
         int selectedIndex = options.getSelectedIndex();
 
-        return characters[selectedIndex];
+        return db.getCharacters()[selectedIndex];
     }
 
     public static Character selectFavoriteCharacter(User user) {
@@ -112,7 +111,7 @@ public class DataSelector {
         panel.add(new JLabel("Informe o jogo:"));
 
         JComboBox<String> options = new JComboBox<>(
-            Arrays.stream(games).map(Game::getName).toArray(String[]::new)
+            Arrays.stream(db.getGames()).map(Game::getName).toArray(String[]::new)
         );
 
         panel.add(options);
@@ -131,6 +130,6 @@ public class DataSelector {
 
         int selectedIndex = options.getSelectedIndex();
 
-        return games[selectedIndex];
+        return db.getGames()[selectedIndex];
     }
 }

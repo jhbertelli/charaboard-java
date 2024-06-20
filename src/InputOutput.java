@@ -1,16 +1,9 @@
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static javax.swing.JOptionPane.*;
 
 public class InputOutput {
-    public static final String DATE_FORMAT = "dd/MM/yyyy";
-
     public static String returnString(String mensagem) {
         String message = "";
 
@@ -31,6 +24,8 @@ public class InputOutput {
     }
 
     public static void showCharacter(Character character) {
+        ArrayList<Game> relatedGames = character.getRelatedGames();
+
         String message = String.format("""
 Dados do personagem
 
@@ -41,14 +36,21 @@ Descrição:
 Raça: %s
 Gênero: %s
 Quantidade de favoritos: %d
+
+Jogos relacionados (%d):
 """,
             character.getName(),
             character.getAge(),
             character.getDescription(),
             character.getRace(),
             character.getGender().toString(),
-            character.getFavorites().size()
+            character.getFavorites().size(),
+            relatedGames.size()
         );
+
+        for (Game game : relatedGames) {
+            message += game.getName() + '\n';
+        }
 
         showMessage(message);
     }
