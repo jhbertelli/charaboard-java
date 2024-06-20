@@ -18,6 +18,7 @@ public class Menu {
         //      exibir jogo
         //      favoritar jogo
         //      remover jogo favorito
+        //      relatório de jogos favoritos
 
         JComboBox<String> options = new JComboBox<>(new String[] {
             "Exibir personagem",
@@ -28,6 +29,7 @@ public class Menu {
             "Remover board",
             "Favoritar personagem",
             "Remover personagem favorito",
+            "Exibir personagens favoritos",
             "Sair"
         });
 
@@ -60,8 +62,11 @@ public class Menu {
                 case 7:
                     removeCharacterFavorite();
                     break;
+                case 8:
+                    showFavoriteCharacters();
+                    break;
             }
-        } while (answer != 8);
+        } while (answer != 9);
     }
 
     private void showCharacter() {
@@ -73,14 +78,21 @@ public class Menu {
     }
 
     private void createBoard() {
-        // try catch temporário
-        try {
-            String name = InputOutput.returnString("Informe o nome do board: ");
-            String description = InputOutput.returnString("Informe a descrição do board: ");
-            user.addBoard(new Board(name, description));
-        } catch (NullPointerException e) {
+        String name = InputOutput.returnString("Informe o nome do board: ");
+
+        if (name == null) {
             InputOutput.showMessage("Operação cancelada.");
+            return;
         }
+
+        String description = InputOutput.returnString("Informe a descrição do board: ");
+
+        if (description == null) {
+            InputOutput.showMessage("Operação cancelada.");
+            return;
+        }
+
+        user.addBoard(new Board(name, description));
     }
 
     private void showBoard() {
@@ -141,5 +153,14 @@ public class Menu {
         if (character == null) return;
 
         user.removeFavoriteCharacter(character);
+    }
+
+    private void showFavoriteCharacters() {
+        if (user.getFavoriteCharacters().isEmpty()) {
+            InputOutput.showMessage("Você não possui personagens favoritos.");
+            return;
+        }
+
+        InputOutput.showFavoriteCharacters(user);
     }
 }

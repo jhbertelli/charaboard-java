@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static javax.swing.JOptionPane.*;
@@ -9,11 +10,13 @@ import static javax.swing.JOptionPane.*;
 public class InputOutput {
     public static final String DATE_FORMAT = "dd/MM/yyyy";
 
-    public static String returnString(String mensagem) throws NullPointerException {
+    public static String returnString(String mensagem) {
         String message = "";
 
         while (message.isEmpty()) {
             String input = showInputDialog(mensagem);
+
+            if (input == null) return null;
 
             message = input.trim();
             if (message.isEmpty()) showMessage("Informe um valor.");
@@ -132,5 +135,20 @@ Descrição: %s
         builder.append('\n');
 
         showMessage(builder.toString());
+    }
+
+    public static void showFavoriteCharacters(User user) {
+        ArrayList<CharacterFavorite> favoriteCharacters = user.getFavoriteCharacters();
+
+        String message = String.format(
+            "Personagens favoritos (%d):\n\n",
+            favoriteCharacters.size()
+        );
+
+        for (CharacterFavorite favorite : favoriteCharacters) {
+            message += favorite.getCharacter().getName() + '\n';
+        }
+
+        showMessage(message);
     }
 }
