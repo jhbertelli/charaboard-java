@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.Nullable;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
@@ -9,7 +7,6 @@ public class DataSelector {
     private static final Character[] characters = FakeCharacters.getFakeCharacters();
     private static final Game[] games = FakeGames.getFakeGames();
 
-    @Nullable
     public static Character selectCharacter() {
         JPanel panel = new JPanel(new GridLayout(2, 1));
 
@@ -38,7 +35,6 @@ public class DataSelector {
         return characters[selectedIndex];
     }
 
-    @Nullable
     public static Character selectFavoriteCharacter(User user) {
         if (user.getFavoriteCharacters().isEmpty()) {
             InputOutput.showMessage("Você não possui personagens favoritos.");
@@ -77,7 +73,6 @@ public class DataSelector {
         return characters.get(selectedIndex);
     }
 
-    @Nullable
     public static Board selectBoard(User user) {
         if (user.getBoards().isEmpty()) {
             InputOutput.showMessage("Você não possui boards no momento.");
@@ -111,7 +106,6 @@ public class DataSelector {
         return user.getBoards().get(selectedIndex);
     }
 
-    @Nullable
     public static Game selectGame() {
         JPanel panel = new JPanel(new GridLayout(2, 1));
 

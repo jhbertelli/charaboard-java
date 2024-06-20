@@ -1,3 +1,6 @@
+import Exceptions.CharacterAlreadyFavoriteException;
+import Exceptions.GameAlreadyFavoriteException;
+
 import java.util.ArrayList;
 
 public class User {
@@ -36,16 +39,18 @@ public class User {
         return favoriteGames;
     }
 
-    public void addFavoriteCharacter(Character character) {
-        // TODO: verificar se o personagem já é favorito do usuário e se for, lançar uma exceção
+    public void addFavoriteCharacter(Character character) throws CharacterAlreadyFavoriteException {
+        if (findFavoriteCharacter(character) != null) throw new CharacterAlreadyFavoriteException();
+
         CharacterFavorite favorite = new CharacterFavorite(character);
 
         favoriteCharacters.add(favorite);
         character.addFavorite(favorite);
     }
 
-    public void addFavoriteGame(Game game) {
-        // TODO: verificar se o jogo já é favorito do usuário e se for, lançar uma exceção
+    public void addFavoriteGame(Game game) throws GameAlreadyFavoriteException {
+        if (findFavoriteGame(game) != null) throw new GameAlreadyFavoriteException();
+
         GameFavorite favorite = new GameFavorite(game);
 
         favoriteGames.add(favorite);
@@ -53,25 +58,33 @@ public class User {
     }
 
     public void removeFavoriteCharacter(Character character) {
-        CharacterFavorite favorite = favoriteCharacters
-            .stream()
-            .filter(x -> x.getCharacter() == character)
-            .findFirst()
-            .orElse(null);
+        CharacterFavorite favorite = findFavoriteCharacter(character);
 
         favoriteCharacters.remove(favorite);
         character.removeFavorite(favorite);
     }
 
     public void removeFavoriteGame(Game game) {
-        GameFavorite favorite = favoriteGames
+        GameFavorite favorite = findFavoriteGame(game);
+
+        favoriteGames.remove(favorite);
+        game.removeFavorite(favorite);
+    }
+
+    public CharacterFavorite findFavoriteCharacter(Character character) {
+        return favoriteCharacters
+            .stream()
+            .filter(x -> x.getCharacter() == character)
+            .findFirst()
+            .orElse(null);
+    }
+
+    public GameFavorite findFavoriteGame(Game game) {
+        return favoriteGames
             .stream()
             .filter(x -> x.getGame() == game)
             .findFirst()
             .orElse(null);
-
-        favoriteGames.remove(favorite);
-        game.removeFavorite(favorite);
     }
 
     public String getPassword() {

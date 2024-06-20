@@ -1,3 +1,5 @@
+import Exceptions.CharacterAlreadyFavoriteException;
+
 import javax.swing.*;
 
 import static javax.swing.JOptionPane.*;
@@ -126,7 +128,11 @@ public class Menu {
 
         if (character == null) return;
 
-        user.addFavoriteCharacter(character);
+        try {
+            user.addFavoriteCharacter(character);
+        } catch (CharacterAlreadyFavoriteException e) {
+            InputOutput.showMessage("Você já favoritou este personagem.");
+        }
     }
 
     private void removeCharacterFavorite() {
