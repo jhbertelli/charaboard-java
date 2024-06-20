@@ -17,11 +17,11 @@ public class LoginPage implements ActionListener {
     JLabel userPasswordLabel = new JLabel("password: ");
     JLabel messageLabel = new JLabel();
     User[] users;
-    HashMap<String,String> loginInfo = new HashMap<String,String>();
+    HashMap<String,String> loginInfo;
 
-    LoginPage(User[] users, HashMap<String,String> loginInfoOriginal){
+    LoginPage(User[] users, HashMap<String,String> loginInfo){
         this.users = users;
-        loginInfo = loginInfoOriginal;
+        this.loginInfo = loginInfo;
 
         userIDLabel.setBounds(50, 100,75,25);
         userPasswordLabel.setBounds(50, 150,75,25);

@@ -6,8 +6,8 @@ public class Game implements IFavoritable<GameFavorite> {
     private Date release;
     private String description;
     private String genre;
-    private ArrayList<Character> relatedCharacters = new ArrayList<>();
-    private ArrayList<GameFavorite> favorites = new ArrayList<>();
+    private final ArrayList<Character> relatedCharacters = new ArrayList<>();
+    private final ArrayList<GameFavorite> favorites = new ArrayList<>();
 
     public Game(String name, Date release, String description, String genre, String publisher, String developer) {
         this.name = name;
@@ -22,10 +22,10 @@ public class Game implements IFavoritable<GameFavorite> {
         return relatedCharacters;
     }
 
-    public Game addRelatedCharacter(Character character){
+    public void addRelatedCharacter(Character character) {
         relatedCharacters.add(character);
-        return this;
     }
+    
     public ArrayList<GameFavorite> getFavorites() {
         return favorites;
     }

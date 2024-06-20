@@ -2,7 +2,6 @@ import Exceptions.CharacterAlreadyFavoriteException;
 import Exceptions.GameAlreadyFavoriteException;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 
 import static javax.swing.JOptionPane.*;
 
