@@ -138,4 +138,19 @@ Descrição: %s
 
         showMessage(message);
     }
+
+    public static void showFavoriteGames(User user) {
+        ArrayList<GameFavorite> favoriteGames = user.getFavoriteGames();
+
+        String message = String.format(
+          "Jogos favoritos (%d):\n\n",
+          favoriteGames.size()
+        );
+
+        for (GameFavorite favorite : favoriteGames) {
+            message += favorite.getGame().getName() + '\n';
+        }
+
+        showMessage(message);
+    }
 }

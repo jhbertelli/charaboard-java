@@ -16,9 +16,6 @@ public class Menu {
     public void showMenu() {
         int answer;
 
-        // TODO:
-        //      relatório de jogos favoritos
-
         JComboBox<String> options = new JComboBox<>(new String[] {
             "Exibir personagem",
             "Criar board",
@@ -32,6 +29,7 @@ public class Menu {
             "Exibir jogo",
             "Favoritar jogo",
             "Remover jogo favorito",
+            "Exibir jogos favoritos",
             "Sair"
         });
 
@@ -76,8 +74,11 @@ public class Menu {
                 case 11:
                     removeGameFavorite();
                     break;
+                case 12:
+                    showFavoriteGames();
+                    break;
             }
-        } while (answer != 12);
+        } while (answer != 13);
     }
 
     private void showCharacter() {
@@ -202,6 +203,15 @@ public class Menu {
         if (game == null) return;
 
         user.removeFavoriteGame(game);
+    }
+
+    private void showFavoriteGames() {
+        if (user.getFavoriteGames().isEmpty()){
+            InputOutput.showMessage("Você não possui jogos favoritos.");
+            return;
+        }
+
+        InputOutput.showFavoriteGames(user);
     }
 
 }
