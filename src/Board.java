@@ -1,3 +1,4 @@
+import Exceptions.CharacterAlreadyOnBoardException;
 import Exceptions.GameAlreadyOnBoardException;
 
 import java.util.ArrayList;
@@ -13,7 +14,9 @@ public class Board {
         this.description = description;
     }
 
-    public void addCharacter(Character character) {
+    public void addCharacter(Character character) throws CharacterAlreadyOnBoardException{
+        if(findCharacterOnBoard(character) != null) throw new CharacterAlreadyOnBoardException();
+
         characters.add(character);
     }
 
@@ -35,6 +38,14 @@ public class Board {
         return games
                 .stream()
                 .filter(x -> x == game)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Character findCharacterOnBoard(Character character) {
+        return characters
+                .stream()
+                .filter(x -> x == character)
                 .findFirst()
                 .orElse(null);
     }

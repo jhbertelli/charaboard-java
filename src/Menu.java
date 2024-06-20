@@ -149,9 +149,11 @@ public class Menu {
 
         if (character == null) return;
 
-
-        board.addCharacter(character);
-
+        try {
+            board.addCharacter(character);
+        } catch (CharacterAlreadyOnBoardException e) {
+            InputOutput.showMessage("Esse personagem já está presente no Board");
+        }
 
     }
 

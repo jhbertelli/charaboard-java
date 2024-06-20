@@ -1,3 +1,4 @@
+import Exceptions.CharacterAlreadyOnBoardException;
 import Exceptions.GameAlreadyOnBoardException;
 
 import java.util.Arrays;
@@ -92,13 +93,13 @@ public class Database {
 
     private void addBoardRelations() {
         try {
-            boardOne.addGame(game2);
-            boardTwo.addCharacter(character1);
-            boardTwo.addCharacter(character2);
-            boardTwo.addGame(game1);
-        } catch (GameAlreadyOnBoardException e) {
-            throw new RuntimeException(e);
-        }
+                boardOne.addGame(game2);
+                boardTwo.addCharacter(character1);
+                boardTwo.addCharacter(character2);
+                boardTwo.addGame(game1);
+            } catch (CharacterAlreadyOnBoardException | GameAlreadyOnBoardException e) {
+                throw new RuntimeException(e);
+            }
 
     }
 
