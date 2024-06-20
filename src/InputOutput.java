@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -47,6 +48,35 @@ Quantidade de favoritos: %d
             character.getRace(),
             character.getGender().toString(),
             character.getFavorites().size()
+        );
+
+        showMessage(message);
+    }
+
+
+    public static void showGame(Game game){
+        String datePattern = "dd-MM-yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
+
+        String message = String.format("""
+Dados do Jogo
+
+Nome: %s
+Lançamento: %s
+Descrição:
+%s
+Gênero: %s
+Distribuidora: %s
+Desenvolvedora: %s
+Quantidade de favoritos: %d
+""",
+                game.getName(),
+                simpleDateFormat.format(game.getRelease()),
+                game.getDescription(),
+                game.getGenre(),
+                game.getPublisher(),
+                game.getDeveloper(),
+                game.getFavorites().size()
         );
 
         showMessage(message);

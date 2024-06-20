@@ -30,6 +30,7 @@ public class Menu {
             "Favoritar personagem",
             "Remover personagem favorito",
             "Exibir personagens favoritos",
+            "Exibir jogo",
             "Sair"
         });
 
@@ -65,8 +66,11 @@ public class Menu {
                 case 8:
                     showFavoriteCharacters();
                     break;
+                case 9:
+                    showGame();
+                    break;
             }
-        } while (answer != 9);
+        } while (answer != 10);
     }
 
     private void showCharacter() {
@@ -75,6 +79,14 @@ public class Menu {
         if (character == null) return;
 
         InputOutput.showCharacter(character);
+    }
+
+    private void showGame() {
+        Game game = DataSelector.selectGame();
+
+        if (game == null) return;
+
+        InputOutput.showGame(game);
     }
 
     private void createBoard() {
