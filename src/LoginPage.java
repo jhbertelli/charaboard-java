@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,26 @@ public class LoginPage implements ActionListener {
     JLabel messageLabel = new JLabel();
     User[] users;
     HashMap<String,String> loginInfo;
+    DocumentListener resetMessageListener = new DocumentListener() {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            onChange();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            onChange();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            onChange();
+        }
+
+        private void onChange() {
+            messageLabel.setText("");
+        }
+    };
 
     LoginPage(User[] users, HashMap<String,String> loginInfo){
         this.users = users;
@@ -26,11 +48,14 @@ public class LoginPage implements ActionListener {
         userIDLabel.setBounds(50, 100,75,25);
         userPasswordLabel.setBounds(50, 150,75,25);
 
-        messageLabel.setBounds(125,250,250,35);
-        messageLabel.setFont(new Font(null, Font.ITALIC,25));
+        messageLabel.setBounds(125,250,250,60);
+        messageLabel.setFont(new Font(null, Font.ITALIC,18));
 
         userIDField.setBounds(125,100,200,25);
+        userIDField.getDocument().addDocumentListener(resetMessageListener);
+
         userPasswordField.setBounds(125,150,200,25);
+        userPasswordField.getDocument().addDocumentListener(resetMessageListener);
 
         loginButton.setBounds(125,200,100,25);
         loginButton.setFocusable(false);
@@ -53,18 +78,19 @@ public class LoginPage implements ActionListener {
         frame.setSize(420,420);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource()==resetButton){
+        if (e.getSource() == resetButton){
             userIDField.setText("");
             userPasswordField.setText("");
+            messageLabel.setText("");
         }
 
-        if (e.getSource()==loginButton) {
+        if (e.getSource() == loginButton) {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
