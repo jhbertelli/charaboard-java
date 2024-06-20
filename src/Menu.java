@@ -18,18 +18,20 @@ public class Menu {
 
         JComboBox<String> options = new JComboBox<>(new String[] {
             "Exibir personagem",
-            "Criar board",
+            "Exibir jogo",
             "Exibir board",
+            "Criar board",
             "Adicionar personagem a um board",
             "Adicionar jogo a um board",
+            "Remover personagem de um board",
+            "Remover jogo de um board",
             "Remover board",
-            "Favoritar personagem",
-            "Remover personagem favorito",
             "Exibir personagens favoritos",
-            "Exibir jogo",
-            "Favoritar jogo",
-            "Remover jogo favorito",
             "Exibir jogos favoritos",
+            "Favoritar personagem",
+            "Favoritar jogo",
+            "Remover personagem favorito",
+            "Remover jogo favorito",
             "Sair"
         });
 
@@ -42,43 +44,49 @@ public class Menu {
                     showCharacter();
                     break;
                 case 1:
-                    createBoard();
+                    showGame();
                     break;
                 case 2:
                     showBoard();
                     break;
                 case 3:
-                    addCharacterToBoard();
+                    createBoard();
                     break;
                 case 4:
-                    addGameToBoard();
+                    addCharacterToBoard();
                     break;
                 case 5:
-                    deleteBoard();
+                    addGameToBoard();
                     break;
                 case 6:
-                    addCharacterFavorite();
+                    removeBoardCharacter();
                     break;
                 case 7:
-                    removeCharacterFavorite();
+                    removeBoardGame();
                     break;
                 case 8:
-                    showFavoriteCharacters();
+                    deleteBoard();
                     break;
                 case 9:
-                    showGame();
+                    showFavoriteCharacters();
                     break;
                 case 10:
-                    addGameFavorite();
-                    break;
-                case 11:
-                    removeGameFavorite();
-                    break;
-                case 12:
                     showFavoriteGames();
                     break;
+                case 11:
+                    addCharacterFavorite();
+                    break;
+                case 12:
+                    addGameFavorite();
+                    break;
+                case 13:
+                    removeCharacterFavorite();
+                    break;
+                case 14:
+                    removeGameFavorite();
+                    break;
             }
-        } while (answer != 13);
+        } while (answer != 15);
     }
 
     private void showCharacter() {
@@ -194,7 +202,6 @@ public class Menu {
         } catch (GameAlreadyFavoriteException e) {
             InputOutput.showMessage("Você já favoritou este jogo.");
         }
-
     }
 
     private void removeGameFavorite() {
@@ -214,5 +221,28 @@ public class Menu {
         InputOutput.showFavoriteGames(user);
     }
 
+    private void removeBoardCharacter() {
+        Board board = DataSelector.selectBoard(user);
+
+        if (board == null) return;
+
+        Character character = DataSelector.selectBoardCharacter(board);
+
+        if (character == null) return;
+
+        board.removeCharacter(character);
+    }
+
+    private void removeBoardGame() {
+        Board board = DataSelector.selectBoard(user);
+
+        if (board == null) return;
+
+        Game game = DataSelector.selectBoardGame(board);
+
+        if (game == null) return;
+
+        board.removeGame(game);
+    }
 }
 
