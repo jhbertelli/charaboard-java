@@ -1,5 +1,5 @@
-public class GameFavorite implements IFavorite{
-    private Game game;
+public class GameFavorite implements IFavorite {
+    private final Game game;
 
     public GameFavorite(Game game) {
         this.game = game;

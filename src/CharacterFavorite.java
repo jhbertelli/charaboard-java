@@ -1,5 +1,5 @@
 public class CharacterFavorite implements IFavorite {
-    private Character character;
+    private final Character character;
 
     public CharacterFavorite(Character character) {
         this.character = character;
