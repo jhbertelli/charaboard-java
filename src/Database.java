@@ -84,10 +84,10 @@ public class Database {
     private void addGameCharacterRelations() {
         pokemonBlue.addRelatedCharacter(redPokemon);
         pokemonRed.addRelatedCharacter(redPokemon);
-        redPokemon.addRelatedGames(pokemonRed);
-        redPokemon.addRelatedGames(pokemonBlue);
+        redPokemon.addRelatedGame(pokemonRed);
+        redPokemon.addRelatedGame(pokemonBlue);
 
-        character1.addRelatedGames(game1);
+        character1.addRelatedGame(game1);
         game1.addRelatedCharacter(character1);
     }
 
@@ -221,8 +221,8 @@ public class Database {
 
     private void generateUsers() {
         userOne = new User(
-            "cristopher",
-            "Cristopher Robin",
+            "christopher",
+            "Christopher Robin",
             "cristopher@fake.com",
             "123");
 

@@ -10,17 +10,17 @@ import java.util.Objects;
 
 public class LoginPage implements ActionListener {
 
-    JFrame frame = new JFrame();
-    JButton loginButton = new JButton("Login");
-    JButton resetButton = new JButton("Reset");
-    JTextField userIDField = new JTextField();
-    JPasswordField userPasswordField = new JPasswordField();
-    JLabel userIDLabel = new JLabel("userID: ");
-    JLabel userPasswordLabel = new JLabel("password: ");
-    JLabel messageLabel = new JLabel();
-    User[] users;
-    HashMap<String,String> loginInfo;
-    DocumentListener resetMessageListener = new DocumentListener() {
+    private final Database database;
+    private final JFrame frame = new JFrame();
+    private final JButton loginButton = new JButton("Login");
+    private final JButton resetButton = new JButton("Reset");
+    private final JTextField userIDField = new JTextField();
+    private final JPasswordField userPasswordField = new JPasswordField();
+    private final JLabel userIDLabel = new JLabel("userID: ");
+    private final JLabel userPasswordLabel = new JLabel("password: ");
+    private final JLabel messageLabel = new JLabel();
+    private final LoginsHashMap logins;
+    private final DocumentListener resetMessageListener = new DocumentListener() {
         @Override
         public void insertUpdate(DocumentEvent e) {
             onChange();
@@ -41,9 +41,9 @@ public class LoginPage implements ActionListener {
         }
     };
 
-    LoginPage(User[] users, HashMap<String,String> loginInfo){
-        this.users = users;
-        this.loginInfo = loginInfo;
+    LoginPage(Database db, LoginsHashMap logins){
+        this.database = db;
+        this.logins = logins;
 
         userIDLabel.setBounds(50, 100,75,25);
         userPasswordLabel.setBounds(50, 150,75,25);
@@ -84,6 +84,8 @@ public class LoginPage implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        HashMap<String,String> loginInfo = logins.getLoginInfo();
+
         if (e.getSource() == resetButton){
             userIDField.setText("");
             userPasswordField.setText("");
@@ -99,13 +101,12 @@ public class LoginPage implements ActionListener {
                  messageLabel.setText("Login successful");
                  frame.dispose();
 
-                 User user = Arrays.stream(users)
+                 User user = Arrays.stream(database.getUsers())
                      .filter(x -> Objects.equals(x.getUsername(), userID))
                      .findFirst()
                      .orElse(null);
 
-                 new Menu(user).showMenu();
-                 //WelcomePage welcomePage = new WelcomePage(user.getUsername());
+                 new Menu(database, logins, user).showMenu();
             } else {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("Wrong Password or userID");

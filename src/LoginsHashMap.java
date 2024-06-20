@@ -1,10 +1,10 @@
 import java.util.HashMap;
 
-public class PasswordsandID {
+public class LoginsHashMap {
     HashMap<String,String> loginInfo = new HashMap<>();
 
-    PasswordsandID(User[] users) {
-        for (User user : users)
+    LoginsHashMap(Database db) {
+        for (User user : db.getUsers())
             loginInfo.put(user.getUsername(), user.getPassword());
     }
 

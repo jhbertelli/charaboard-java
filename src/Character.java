@@ -21,7 +21,7 @@ public class Character implements IFavoritable<CharacterFavorite> {
         return relatedGames;
     }
 
-    public void addRelatedGames(Game game){
+    public void addRelatedGame(Game game){
         relatedGames.add(game);
     }
 

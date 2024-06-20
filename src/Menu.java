@@ -9,8 +9,12 @@ import static javax.swing.JOptionPane.*;
 
 public class Menu {
     private final User user;
+    private final Database database;
+    private final LoginsHashMap logins;
 
-    Menu(User user) {
+    Menu(Database db, LoginsHashMap logins, User user) {
+        this.database = db;
+        this.logins = logins;
         this.user = user;
     }
 
@@ -88,6 +92,8 @@ public class Menu {
                     break;
             }
         } while (answer != 15);
+
+        new LoginPage(database, logins);
     }
 
     private void showCharacter() {
