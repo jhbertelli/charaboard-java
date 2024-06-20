@@ -2,6 +2,7 @@ import Exceptions.CharacterAlreadyFavoriteException;
 import Exceptions.GameAlreadyFavoriteException;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 
 import static javax.swing.JOptionPane.*;
 
@@ -16,8 +17,6 @@ public class Menu {
         int answer;
 
         // TODO:
-        //      favoritar jogo
-        //      remover jogo favorito
         //      relatório de jogos favoritos
 
         JComboBox<String> options = new JComboBox<>(new String[] {
@@ -32,6 +31,7 @@ public class Menu {
             "Exibir personagens favoritos",
             "Exibir jogo",
             "Favoritar jogo",
+            "Remover jogo favorito",
             "Sair"
         });
 
@@ -73,8 +73,11 @@ public class Menu {
                 case 10:
                     addGameFavorite();
                     break;
+                case 11:
+                    removeGameFavorite();
+                    break;
             }
-        } while (answer != 11);
+        } while (answer != 12);
     }
 
     private void showCharacter() {
@@ -191,6 +194,14 @@ public class Menu {
             InputOutput.showMessage("Você já favoritou este jogo.");
         }
 
+    }
+
+    private void removeGameFavorite() {
+        Game game = DataSelector.selectFavoriteGame(user);
+
+        if (game == null) return;
+
+        user.removeFavoriteGame(game);
     }
 
 }

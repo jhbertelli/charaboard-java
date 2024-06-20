@@ -57,8 +57,7 @@ Jogos relacionados (%d):
 
 
     public static void showGame(Game game){
-        String datePattern = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
+        ArrayList<Character> relatedCharacters = game.getRelatedCharacters();
 
         String message = String.format("""
 Dados do Jogo
@@ -71,6 +70,8 @@ Gênero: %s
 Distribuidora: %s
 Desenvolvedora: %s
 Quantidade de favoritos: %d
+
+Personagens Relacionados (%d):
 """,
                 game.getName(),
                 DateUtils.formatarDataParaString(game.getRelease()),
@@ -78,8 +79,13 @@ Quantidade de favoritos: %d
                 game.getGenre(),
                 game.getPublisher(),
                 game.getDeveloper(),
-                game.getFavorites().size()
+                game.getFavorites().size(),
+                relatedCharacters.size()
         );
+
+        for (Character character : relatedCharacters) {
+            message += character.getName() + '\n';
+        }
 
         showMessage(message);
     }
