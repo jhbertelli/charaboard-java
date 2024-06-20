@@ -1,5 +1,7 @@
 import Exceptions.CharacterAlreadyFavoriteException;
+import Exceptions.CharacterAlreadyOnBoardException;
 import Exceptions.GameAlreadyFavoriteException;
+import Exceptions.GameAlreadyOnBoardException;
 
 import javax.swing.*;
 
@@ -147,7 +149,10 @@ public class Menu {
 
         if (character == null) return;
 
+
         board.addCharacter(character);
+
+
     }
 
     private void addGameToBoard() {
@@ -159,7 +164,11 @@ public class Menu {
 
         if (game == null) return;
 
-        board.addGame(game);
+        try {
+            board.addGame(game);
+        } catch (GameAlreadyOnBoardException e) {
+            InputOutput.showMessage("Esse jogo já está presente no Board.");
+        }
     }
 
     private void addCharacterFavorite() {
