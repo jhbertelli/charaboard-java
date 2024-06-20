@@ -55,7 +55,7 @@ Quantidade de favoritos: %d
 
 
     public static void showGame(Game game){
-        String datePattern = "dd-MM-yyyy";
+        String datePattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
 
         String message = String.format("""
@@ -71,7 +71,7 @@ Desenvolvedora: %s
 Quantidade de favoritos: %d
 """,
                 game.getName(),
-                simpleDateFormat.format(game.getRelease()),
+                DateUtils.formatarDataParaString(game.getRelease()),
                 game.getDescription(),
                 game.getGenre(),
                 game.getPublisher(),

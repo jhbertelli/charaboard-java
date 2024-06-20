@@ -1,4 +1,5 @@
 import Exceptions.CharacterAlreadyFavoriteException;
+import Exceptions.GameAlreadyFavoriteException;
 
 import javax.swing.*;
 
@@ -15,7 +16,6 @@ public class Menu {
         int answer;
 
         // TODO:
-        //      exibir jogo
         //      favoritar jogo
         //      remover jogo favorito
         //      relatório de jogos favoritos
@@ -31,6 +31,7 @@ public class Menu {
             "Remover personagem favorito",
             "Exibir personagens favoritos",
             "Exibir jogo",
+            "Favoritar jogo",
             "Sair"
         });
 
@@ -69,8 +70,11 @@ public class Menu {
                 case 9:
                     showGame();
                     break;
+                case 10:
+                    addGameFavorite();
+                    break;
             }
-        } while (answer != 10);
+        } while (answer != 11);
     }
 
     private void showCharacter() {
@@ -175,4 +179,19 @@ public class Menu {
 
         InputOutput.showFavoriteCharacters(user);
     }
+
+    private void addGameFavorite() {
+        Game game = DataSelector.selectGame();
+
+        if(game == null) return;
+
+        try {
+            user.addFavoriteGame(game);
+        } catch (GameAlreadyFavoriteException e) {
+            InputOutput.showMessage("Você já favoritou este jogo.");
+        }
+
+    }
+
 }
+
