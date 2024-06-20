@@ -16,6 +16,7 @@ public class Database {
 
     private Game pokemonRed;
     private Game pokemonBlue;
+    private Game tombRaider2013;
     private Game game1;
     private Game game2;
     private Game game3;
@@ -58,6 +59,8 @@ public class Database {
     public Game[] getGames() {
         return Arrays.stream(new Game[]{
             pokemonRed,
+            pokemonBlue,
+            tombRaider2013,
             game1,
             game2,
             game3
@@ -89,18 +92,20 @@ public class Database {
 
         character1.addRelatedGame(game1);
         game1.addRelatedCharacter(character1);
+
+        laraCroft.addRelatedGame(tombRaider2013);
+        tombRaider2013.addRelatedCharacter(laraCroft);
     }
 
     private void addBoardRelations() {
         try {
-                boardOne.addGame(game2);
-                boardTwo.addCharacter(character1);
-                boardTwo.addCharacter(character2);
-                boardTwo.addGame(game1);
-            } catch (CharacterAlreadyOnBoardException | GameAlreadyOnBoardException e) {
-                throw new RuntimeException(e);
-            }
-
+            boardOne.addGame(game2);
+            boardTwo.addCharacter(character1);
+            boardTwo.addCharacter(character2);
+            boardTwo.addGame(game1);
+        } catch (CharacterAlreadyOnBoardException | GameAlreadyOnBoardException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void generateCharacters() {
@@ -196,6 +201,7 @@ public class Database {
             "Magic Tree Games",
             "DreamCraft"
         );
+
         game3 = new Game(
             "Starship Titans: Galactic Wars",
             new Date(102,8,19),
@@ -204,6 +210,7 @@ public class Database {
             "Galactic Empires",
             "StarForge Interactive"
         );
+
         pokemonBlue = new Game(
             "Pokémon Blue",
             new Date(96,2,27),
@@ -211,6 +218,19 @@ public class Database {
             "Aventura, JRPG",
             "Nintendo",
             "Game Freak"
+        );
+
+        tombRaider2013 = new Game(
+            "Tomb Raider (2013)",
+            new Date(113, 3, 4),
+"""
+O jogo é um reboot da icônica série de ação e aventura que segue as origens de Lara Croft,
+uma arqueóloga jovem e inexperiente que se vê presa em uma ilha misteriosa após um naufrágio.
+Lara deve lutar pela sobrevivência contra forças naturais e humanas enquanto desvenda os
+segredos da ilha e enfrenta desafios perigosos para salvar seus amigos.""",
+            "Ação, aventura, tiro",
+            "Square Enix",
+            "Crystal Dynamics"
         );
     }
 
