@@ -1,3 +1,5 @@
+import Exceptions.GameAlreadyOnBoardException;
+
 import java.util.ArrayList;
 
 public class Board {
@@ -15,7 +17,9 @@ public class Board {
         characters.add(character);
     }
 
-    public void addGame(Game game) {
+    public void addGame(Game game) throws GameAlreadyOnBoardException {
+        if(findGameOnBoard(game) != null) throw new GameAlreadyOnBoardException();
+
         games.add(game);
     }
 
@@ -25,6 +29,14 @@ public class Board {
 
     public void removeGame(Game game) {
         games.remove(game);
+    }
+
+    public Game findGameOnBoard(Game game) {
+        return games
+                .stream()
+                .filter(x -> x == game)
+                .findFirst()
+                .orElse(null);
     }
 
     public String getName() {
