@@ -32,6 +32,7 @@ Nome: %s
 Idade: %d
 Descrição:
 %s
+
 Raça: %s
 Gênero: %s
 Quantidade de favoritos: %d
@@ -65,6 +66,7 @@ Nome: %s
 Lançamento: %s
 Descrição:
 %s
+
 Gênero: %s
 Distribuidora: %s
 Desenvolvedora: %s

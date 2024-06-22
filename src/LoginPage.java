@@ -16,8 +16,8 @@ public class LoginPage implements ActionListener {
     private final JButton resetButton = new JButton("Reset");
     private final JTextField userIDField = new JTextField();
     private final JPasswordField userPasswordField = new JPasswordField();
-    private final JLabel userIDLabel = new JLabel("userID: ");
-    private final JLabel userPasswordLabel = new JLabel("password: ");
+    private final JLabel userNameLabel = new JLabel("Nome de usuário: ");
+    private final JLabel userPasswordLabel = new JLabel("Senha: ");
     private final JLabel messageLabel = new JLabel();
     private final LoginsHashMap logins;
     private final DocumentListener resetMessageListener = new DocumentListener() {
@@ -45,19 +45,19 @@ public class LoginPage implements ActionListener {
         this.database = db;
         this.logins = logins;
 
-        userIDLabel.setBounds(50, 100,75,25);
-        userPasswordLabel.setBounds(50, 150,75,25);
+        userNameLabel.setBounds(50, 100,150,25);
+        userPasswordLabel.setBounds(50, 150,150,25);
 
-        messageLabel.setBounds(125,250,250,60);
+        messageLabel.setBounds(50,250,350,60);
         messageLabel.setFont(new Font(null, Font.ITALIC,18));
 
-        userIDField.setBounds(125,100,200,25);
+        userIDField.setBounds(200,100,200,25);
         userIDField.getDocument().addDocumentListener(resetMessageListener);
 
-        userPasswordField.setBounds(125,150,200,25);
+        userPasswordField.setBounds(200,150,200,25);
         userPasswordField.getDocument().addDocumentListener(resetMessageListener);
 
-        loginButton.setBounds(125,200,100,25);
+        loginButton.setBounds(100,200,100,25);
         loginButton.setFocusable(false);
         loginButton.addActionListener(this);
 
@@ -66,7 +66,7 @@ public class LoginPage implements ActionListener {
         resetButton.addActionListener(this);
 
 
-        frame.add(userIDLabel);
+        frame.add(userNameLabel);
         frame.add(userPasswordLabel);
         frame.add(messageLabel);
         frame.add(userIDField);
@@ -75,7 +75,7 @@ public class LoginPage implements ActionListener {
         frame.add(resetButton);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,420);
+        frame.setSize(450,450);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -109,7 +109,7 @@ public class LoginPage implements ActionListener {
                  new Menu(database, logins, user).showMenu();
             } else {
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText("Wrong Password or userID");
+                messageLabel.setText("Nome de usuário ou senha incorreto(s)");
             }
         }
     }
